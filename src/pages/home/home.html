@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>MVO - Rosana</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
+  <p></p>
+
+<!--  <button ion-button (click)="carregaVendas()">Carregar vendas</button> -->
+<!--  <ion-list>
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-select [(ngModel)]="usuario">
+        <ion-option *ngFor="let item of items" value={{item.firstName}}>{{item.firstName}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+-->
+
+<!-- <button ion-button (click)="launchProvider()">next</button>
+-->
+
+<p>Escolha o cliente que voce está trabalhando clicando no botão abaixo:</p>
+<div text-center>
+<button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
+</div>
+
+<div *ngIf="NomeCliente!=' ' ; elseBlock">
+  <ion-list>
+    <p>Últimas compras do cliente: {{NomeCliente}}</p>
+    <ion-item *ngFor="let item of items" >
+      <p>{{ item.CodProduto}}</p>
+      <p>Data: {{ item.DataPagamento }}</p>
+      <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}</p>
+    </ion-item>
+  </ion-list>
+
+  <!--
+    <button ion-button round color="secondary" (click)="abreVouvender()">Vou Vender</button>
+    <p></p>
+-->
+
+  </div>
+
+  <p>Consulte seu estoque para iniciar as vendas.</p>
+  <div text-center>
+    <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
+    <p></p>
+    <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
+    <p></p>
+    <button ion-button round icon-right color="light" (click)="abreCompartilhar()">
+      Compartilhamento
+    <ion-icon name="share"></ion-icon>
+    </button>
+  </div>
+</ion-content>
+
+<!--
+<ion-footer>
+  <ion-navbar>
+    <button ion-button clear (click)="abreEstoquesegmentado()">
+        <ion-icon name="refresh"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-footer>-->

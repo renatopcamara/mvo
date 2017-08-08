@@ -1,0 +1,45 @@
+<!--
+  Generated template for the Produtos page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Catálogo de Produtos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p>Utilize a campo busca para filtrar o catálogo pelo nome do produto.</p>
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    placeholder="busca"
+    showCancelButton = true
+    type = "text"
+    (ionInput)="filterItemsProdutos($event.target.value)">
+  </ion-searchbar>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="selecionaProduto()">
+      <p>Código Hinode: {{ item.CodigoHinode }}</p>
+      <p>Nome: {{ item.Nome }}</p>
+      <p>Preço: {{ item.Preco  }}</p>
+      <p>Custo: {{ item.Custo }}</p>
+      <p>Status: {{ item.Status}}</p>
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-navbar color="light"> 
+    <button ion-button clear (click)="refreshCatalogo()">
+      <ion-icon name="refresh"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-footer>

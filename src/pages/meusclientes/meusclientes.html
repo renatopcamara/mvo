@@ -1,0 +1,63 @@
+
+<ion-header>
+
+  <ion-navbar color="danger">
+
+    <ion-title text-center>Meus Clientes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal(' ')"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <p>Selecione um dos clientes da lista abaixo:</p>
+    <ion-item-sliding *ngFor="let item of items">
+      <button ion-item (click)="closeModal(item)">
+        <p>Nome: {{ item.Nome }}</p>
+        <p>Email: {{ item.Email  }}</p>
+        <p>Whatsapp: {{ item.Whatsapp }}</p>
+        <p>Fixo: {{ item.Fixo }}</p>
+      </button>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start (click)="Deletar(item.id)">
+          <ion-icon name="trash"></ion-icon>
+          Apagar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+<p>Para cadastrar novo cliente, preencha os campos abaixo e clique em SALVAR.</p>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Whatsapp</ion-label>
+      <ion-input type="tel" [(ngModel)]="whatsapp"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Fixo</ion-label>
+      <ion-input type="tel" [(ngModel)]="fixo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>E-Mail</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button color="light" block (click)="novoItem()">Salvar</button>
+
+</ion-content>
+
+<ion-footer>
+  <ion-navbar color="light">
+    <div *ngIf="NomeCliente!=' ' ; elseBlock">
+      <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
+    </div>
+  </ion-navbar>
+</ion-footer>

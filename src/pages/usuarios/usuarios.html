@@ -1,0 +1,39 @@
+<!--
+  Generated template for the Usuarios page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Registre-se</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<!-- <p>{{ loggedInUser }}</p>
+<p> </p>
+<button ion-button (click)="getItems()" block>Ver Resultado</button>
+<p> </p>
+-->
+
+<p>Na lista abaixo, escolha seu usuário clicando em uma opção da lista.</p>
+
+<h3>{{NomedoUsuario}}</h3>
+
+<ion-list>
+  <button ion-item *ngFor="let item of items" (click)="selecionaUsuario(item.firstName)">
+    <p>Id: {{ item.id }}</p>
+    <p>Email: {{ item.email }}</p>
+    <p>FirstName: {{ item.firstName }}</p>
+    <p>LastName: {{ item.lastName }}</p>
+  </button>
+</ion-list>
+</ion-content>
