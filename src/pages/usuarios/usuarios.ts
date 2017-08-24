@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
-import { HomePage } from "../home/home";
+
 
 @Component({
   selector: 'page-usuarios',

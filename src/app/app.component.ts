@@ -6,15 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
 
-import { Usuarios } from '../pages/usuarios/usuarios';
 import { Produtos } from '../pages/produtos/produtos';
-import { Meuestoque } from '../pages/meuestoque/meuestoque';
-import { Meusclientes } from '../pages/meusclientes/meusclientes';
-import { Vouvender } from '../pages/vouvender/vouvender';
-import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
-import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 import { Login } from '../pages/login/login';
-import { Listadedesejos } from '../pages/listadedesejos/listadedesejos';
+
 
 import { BackandService } from '@backand/angular2-sdk';
 
@@ -44,7 +38,7 @@ export class MyApp {
 //      { title: 'Vou Vender', component: Vouvender },
 //      { title: 'Meus Clientes', component: Meusclientes },
       { title: 'Catálogo de Produtos', component: Produtos },
-      { title: 'Compartilhamentos', component: Compartilhamento },
+//      { title: 'Compartilhamentos', component: Compartilhamento },
       { title: 'Log In', component: Login }
 //      { title: 'List Page', component: ListPage}
       ];

@@ -78,7 +78,7 @@ export class Produtos {
     ((res: any) =>
       {
         this.items = res.data;
-        console.log('passou no getlist com filtro');
+  //      console.log('passou no getlist com filtro');
         this.navCtrl.getActive()
       },(err: any) =>
       {
@@ -128,7 +128,7 @@ export class Produtos {
       [{
           name: 'qtd',
           placeholder: 'Quantidade',
-          type: 'number'
+          type: 'tel',
         },
       ],
       buttons:
@@ -204,8 +204,12 @@ export class Produtos {
       this.getItems();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Produtos');
+  ionViewDidLoad()
+  {
+    this.NomeCliente = this.navParams.get('Cliente');
+    this.CodCliente = this.navParams.get('CodCliente');
+//    console.log('ionViewDidLoad Produtos');
   }
+
 
 }

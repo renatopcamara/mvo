@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
+import { Users } from '../../providers/users'
 
 @Component({
   selector: 'page-meusclientes',
@@ -31,13 +32,19 @@ export class Meusclientes {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
+    public userServices: Users,
     public backand: BackandService)
   {
   }
 
   public getItems()
   {
-    this.backand.object.getList('Clientes').then
+    let params =
+    {
+      filter: this.backand.helpers.filter.create('CodUsuario', 'equals', this.userServices.loggedInUser),
+      sort: this.backand.helpers.sort.create('Nome', 'asc')
+    }
+    this.backand.object.getList('Clientes',params).then
     ((res: any) =>
         {
           this.items = res.data;
@@ -57,14 +64,15 @@ export class Meusclientes {
       Email: this.email,
       Whatsapp: this.whatsapp,
       Fixo: this.fixo,
-      Status: 'Ativo'
+      Status: 'Ativo',
+      CodUsuario: this.userServices.loggedInUser
     };
-    console.log(item)
+//    console.log(item)
     if (item.Whatsapp && item.Nome)
       this.backand.object.create('clientes',item).then
       ((res: any) =>
           {
-            console.log('salvei...');
+//            console.log(item);
             this.id=null;
             this.nome=' ';
             this.email="";
@@ -85,7 +93,7 @@ export class Meusclientes {
     this.email=registro.email;
     this.whatsapp=registro.whatsapp;
     this.fixo=registro.fixo;
-    console.log('registros de atualização' + registro.id)
+//    console.log('registros de atualização' + registro.id)
   }
 
   public Deletar(indice)

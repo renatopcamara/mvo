@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, List, ModalController } from
 import { BackandService } from '@backand/angular2-sdk';
 import { Vouvender } from '../vouvender/vouvender';
 import { Meusclientes } from '../meusclientes/meusclientes';
+import { Users } from '../../providers/users'
 
 /**
  * Generated class for the Estoquesegmentado page.
@@ -38,6 +39,7 @@ export class Estoquesegmentado {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
+    public userServices: Users,
     public backand: BackandService)
   {
     this.origem = "mine";
@@ -73,7 +75,7 @@ export class Estoquesegmentado {
   {
     let params =
     {
-      filter: this.backand.helpers.filter.create('CodUsuario', 'contains', "Rosana"),
+      filter: this.backand.helpers.filter.create('CodUsuario', 'contains', this.userServices.loggedInUser),
       sort: this.backand.helpers.sort.create('NomedoProduto', 'asc')
     }
 //    console.log('parametros:'+params)
@@ -93,7 +95,7 @@ public getItemsOutrosEstoques()
 {
   let params =
   {
-    filter: this.backand.helpers.filter.create('CodUsuario', 'contains', "Renato"),
+    filter: this.backand.helpers.filter.create('CodUsuario', 'notEquals', this.userServices.loggedInUser),
     sort: this.backand.helpers.sort.create('NomedoProduto', 'asc')
   }
   console.log('parametros:'+params)
@@ -167,7 +169,7 @@ private verificaNomeCliente()
         text: 'Ok',
         role: 'cancel',
         handler: () => {
-          console.log('Não clicked');
+//          console.log('Não clicked');
           this.navCtrl.pop();
           }
       }]
@@ -191,7 +193,7 @@ VouVender(nomeProduto)
     Qtd: nomeProduto.Quantidade,
     Preco: nomeProduto.Preco
   };
-  console.log("para formação do data Codigo do clinte: " + this.CodCliente);
+//  console.log("para formação do data Codigo do clinte: " + this.CodCliente);
   this.navCtrl.push(Vouvender, data)
 }
 
@@ -205,7 +207,7 @@ VouVender(nomeProduto)
       this.CodCliente = data.CodCliente;
     });
     modal.present();
-    console.log("passei no addcliente do estoquesegmentado");
+//    console.log("passei no addcliente do estoquesegmentado");
   }
 
   ionViewDidEnter()
@@ -220,7 +222,7 @@ VouVender(nomeProduto)
     this.NomeCliente = this.navParams.get('Cliente');
     this.CodCliente = this.navParams.get('CodCliente');
     this.NomedoUsuario = this.navParams.get('Usuario');
-    console.log('Código do cliente recebido: ' + this.CodCliente);
+//    console.log('Código do cliente recebido: ' + this.CodCliente);
   }
 
 }

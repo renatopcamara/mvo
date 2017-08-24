@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, List, AlertController } from 'ionic-angular';
+import { NavController, NavParams, List, AlertController, ModalController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Users } from '../../providers/users'
+import { Meusclientes } from '../meusclientes/meusclientes';
 
 /**
  * Generated class for the Listadedesejos page.
@@ -20,12 +21,15 @@ export class Listadedesejos {
 
 items:any[] = [];
 DesejoID: string;
+NomeCliente: string;
+CodCliente: string = ' ';
 
   constructor
   ( public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public backand: BackandService,
+    public modalCtrl: ModalController,
     public userServices: Users)
   {
     this.getItems()
@@ -41,7 +45,7 @@ DesejoID: string;
     ((res: any) =>
         {
           this.items = res.data;
-          console.log(this.items);
+//          console.log(this.items);
         },(err: any) =>
         {
           alert(err.data);
@@ -79,7 +83,7 @@ DesejoID: string;
     }
     console.log(item);
     this.DesejoID = infos.id;
-    console.log("Item ID do desejo" , this.DesejoID);
+//    console.log("Item ID do desejo" , this.DesejoID);
     this.DesejoviraEstoque(item, this.DesejoID);
   }
 
@@ -146,11 +150,11 @@ DesejoID: string;
     this.backand.object.create('Estoques',item).then
     ((res: any) =>
       {
-        console.log('desejo salvo em estoque');
+//        console.log('desejo salvo em estoque');
         this.backand.object.remove('Desejos',DesireID).then
         ((res: any) =>
           {
-            console.log('desejo apagado:' + DesireID);
+//            console.log('desejo apagado:' + DesireID);
             this.getItems();
           },(err: any) =>
           {
@@ -164,8 +168,24 @@ DesejoID: string;
     );
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Listadedesejos');
+  addCliente()
+  {
+    let modal = this.modalCtrl.create(Meusclientes);
+    modal.onDidDismiss((data)=>
+    {
+      console.log("Vou Vender. Cliente: " + data.NomeCliente + " COD:" + data.CodCliente);
+      this.NomeCliente = data.NomeCliente;
+      this.CodCliente = data.CodCliente;
+    });
+    modal.present();
+  //    console.log("passei no addcliente do estoquesegmentado");
+  }
+
+  ionViewDidLoad()
+  {
+    this.NomeCliente = this.navParams.get('Cliente');
+    this.CodCliente = this.navParams.get('CodCliente');
+//    console.log('ionViewDidLoad Listadedesejos');
   }
 
 }

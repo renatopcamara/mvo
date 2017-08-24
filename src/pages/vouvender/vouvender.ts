@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ModalController } from 'ioni
 import { BackandService } from '@backand/angular2-sdk';
 import { Meusclientes } from '../meusclientes/meusclientes';
 import { SMS } from '@ionic-native/sms';
+import { Users } from '../../providers/users'
 
 @Component({
   selector: 'page-vouvender',
@@ -36,6 +37,7 @@ export class Vouvender {
     public backand: BackandService,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
+    public userServices: Users,
     private sms: SMS)
   {
 
@@ -137,7 +139,8 @@ export class Vouvender {
       DataEntrega: this.Dataentrega,
       CodProduto: this.ProdutoParaVender,
       idCliente: this.CodCliente,
-      NomedoCliente: this.NomeCliente
+      NomedoCliente: this.NomeCliente,
+      CodUsuario: this.userServices.loggedInUser
     };
     console.log('Cliente:' + this.NomeCliente +' ID:' + this.CodCliente)
     this.backand.object.create('Vendas',item).then
@@ -176,7 +179,7 @@ export class Vouvender {
     this.QuantidadeEscolhida = this.navParams.get('Qtd');
     this.Quantidadeemestoque = this.navParams.get('Qtd');
     this.Preco = this.navParams.get('Preco');
-    console.log('Cliente: ' + this.NomeCliente + ' Cod do Cliente: ' + this.CodCliente);
+//    console.log('Cliente: ' + this.NomeCliente + ' Cod do Cliente: ' + this.CodCliente);
   }
 
   ionViewDidEnter() {

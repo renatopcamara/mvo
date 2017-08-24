@@ -3,7 +3,7 @@
 
   <ion-navbar color="danger">
 
-    <ion-title text-center>Meus Clientes - {{NomedoUsuario}}</ion-title>
+    <ion-title text-center>Meus Clientes - {{this.userServices.loggedInUser}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="closeModal(' ')"><ion-icon name="close"></ion-icon></button>
     </ion-buttons>

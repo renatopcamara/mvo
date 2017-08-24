@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>Vou Vender - {{NomedoUsuario}}</ion-title>
+    <ion-title text-center>Vou Vender - {{this.userServices.loggedInUser}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -32,7 +32,7 @@
     <ion-item-divider color="light">Dados do Produto</ion-item-divider>-->
       <ion-item>
         <ion-label floating>Produto</ion-label>
-        <ion-input type="text" [(ngModel)]="ProdutoParaVender" ></ion-input>
+        <ion-input type="text" [(ngModel)]="ProdutoParaVender" [disabled]=true></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Quantidade</ion-label>
@@ -40,24 +40,25 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Preço</ion-label>
-        <ion-input type="number" [(ngModel)]="Preco"></ion-input>
+        <ion-input type="number" [(ngModel)]="Preco" [disabled]=true></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Data Pagamento</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Datapgto"></ion-datetime>
       </ion-item>
-      <ion-item>
+<!--      <ion-item>
         <ion-label floating>Data Entrega</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Dataentrega">dataentrega</ion-datetime>
       </ion-item>
+-->
   </ion-item-group>
-  <button ion-button color="light" block (click)="fechamentoVenda()">Confirmação da Venda</button>
+  <button ion-button color="secondary" block (click)="fechamentoVenda()">Confirmação da Venda</button>
 
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light">
-    <button end ion-button clear (click)="addCliente()">
+  <ion-navbar color="secondary">
+    <button ion-button clear (click)="addCliente()">
         <ion-icon name="contacts"></ion-icon>
     </button>
     <div *ngIf="NomeCliente!=' ' ; elseBlock">

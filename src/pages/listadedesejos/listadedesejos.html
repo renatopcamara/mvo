@@ -32,7 +32,7 @@
         </button>
         <button ion-button icon-start (click)="compradesejo(item)">
           <ion-icon name="card"></ion-icon>
-          Comprado
+          Comprei
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -42,5 +42,11 @@
 
 <ion-footer>
   <ion-navbar color="secondary">
+    <button ion-button icon-end clear color="light" (click)="addCliente()">
+        <ion-icon name="contacts"></ion-icon>
+    </button>
+    <div *ngIf="NomeCliente!=' '">
+        <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
+    </div>
   </ion-navbar>
 </ion-footer>

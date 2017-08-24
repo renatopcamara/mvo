@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Users } from '../../providers/users'
-import { HomePage } from "../home/home";
+
 
 @Component({
   selector: 'page-login',
@@ -39,7 +39,6 @@ deslogar()
 {
   this.userServices.signOut();
   this.navCtrl.pop();
-  this.showToast('middle')
 }
 
 logar()

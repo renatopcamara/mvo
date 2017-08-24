@@ -39,7 +39,13 @@ DataPagamento: string = new Date().toISOString();
 
   public abrelistaDesejo()
   {
-    this.navCtrl.push(Listadedesejos)
+    let data =
+    {
+      Cliente: this.NomeCliente,
+      CodCliente: this.CodCliente,
+      Usuario: this.NomedoUsuario
+    };
+    this.navCtrl.push(Listadedesejos,data);
   }
 
   private pegadadosUsuario()
@@ -119,6 +125,7 @@ DataPagamento: string = new Date().toISOString();
       CodCliente: this.CodCliente,
       Usuario: this.NomedoUsuario
     };
+    console.log(data);
     this.navCtrl.push(Produtos, data)
   }
 
@@ -134,7 +141,7 @@ DataPagamento: string = new Date().toISOString();
   ionViewDidEnter()
   {
   //  console.log('ionViewDidEnter Home');
-//    this.carregaVendas();
+    this.carregaVendas();
     this.pegadadosUsuario();
   }
 }
