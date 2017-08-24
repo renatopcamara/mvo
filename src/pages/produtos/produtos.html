@@ -24,22 +24,39 @@
     type = "text"
     (ionInput)="filterItemsProdutos($event.target.value)">
   </ion-searchbar>
-
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="selecionaProduto()">
-      <p>Código Hinode: {{ item.CodigoHinode }}</p>
-      <p>Nome: {{ item.Nome }}</p>
-      <p>Preço: {{ item.Preco  }}</p>
-      <p>Custo: {{ item.Custo }}</p>
-      <p>Status: {{ item.Status}}</p>
-    </button>
-  </ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <button ion-item (click)="selecionaProduto()">
+        <p>Código Hinode: {{ item.CodigoHinode }}</p>
+        <p>Nome: {{ item.Nome }}</p>
+        <p>Preço: {{ item.Preco  }}</p>
+      </button>
+      <ion-item-options>
+        <button ion-button color="secondary" icon-start (click)="listadedesejos(item,'Desejo')">
+          <ion-icon name="cart"></ion-icon>
+          Desejo
+        </button>
+        <button ion-button color="primary" icon-start (click)="listadedesejos(item,'Pedido')">
+          <ion-icon name="cart"></ion-icon>
+          Pedido
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light"> 
-    <button ion-button clear (click)="refreshCatalogo()">
+  <ion-navbar color="light">
+    <button ion-button icon-start clear (click)="refreshCatalogo()" end>
       <ion-icon name="refresh"></ion-icon>
     </button>
+    <button ion-button icon-end clear (click)="addCliente()">
+        <ion-icon name="contacts"></ion-icon>
+    </button>
+    <div *ngIf="NomeCliente!=' '">
+        <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
+    </div>
   </ion-navbar>
+
+
 </ion-footer>

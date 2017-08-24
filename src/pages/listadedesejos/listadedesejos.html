@@ -1,0 +1,46 @@
+<!--
+  Generated template for the Listadedesejos page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Lista de Desejos - {{this.userServices.loggedInUser}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <button ion-item (click)="selecionaProduto()">
+        <p>Código Hinode: {{ item.CodProduto }}</p>
+        <p>{{ item.NomedoProduto }}</p>
+        <p>Qtd: {{ item.Quantidade }}  Preço Unitário: R${{ item.Preco  }}</p>
+        <p>Cliente: {{ item.NomeCliente }}</p>
+      </button>
+      <ion-item-options>
+        <button ion-button color="light" icon-start (click)="retiradesejos(item.id)">
+          <ion-icon name="trash"></ion-icon>
+          Desistir
+        </button>
+        <button ion-button icon-start (click)="compradesejo(item)">
+          <ion-icon name="card"></ion-icon>
+          Comprado
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-navbar color="secondary">
+  </ion-navbar>
+</ion-footer>

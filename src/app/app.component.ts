@@ -13,8 +13,11 @@ import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
 import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
 import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
+import { Login } from '../pages/login/login';
+import { Listadedesejos } from '../pages/listadedesejos/listadedesejos';
 
 import { BackandService } from '@backand/angular2-sdk';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +45,7 @@ export class MyApp {
 //      { title: 'Meus Clientes', component: Meusclientes },
       { title: 'Catálogo de Produtos', component: Produtos },
       { title: 'Compartilhamentos', component: Compartilhamento },
-      { title: 'Log In', component: Usuarios }
+      { title: 'Log In', component: Login }
 //      { title: 'List Page', component: ListPage}
       ];
     }

@@ -6,7 +6,9 @@ import { Meusclientes } from '../meusclientes/meusclientes';
 import { Vouvender } from '../vouvender/vouvender';
 import { Estoquesegmentado } from '../estoquesegmentado/estoquesegmentado';
 import { Compartilhamento } from '../compartilhamento/compartilhamento';
-
+import { Login } from '../login/login';
+import { Users } from '../../providers/users'
+import { Listadedesejos } from '../listadedesejos/listadedesejos';
 
 @Component({
   selector: 'page-home',
@@ -16,17 +18,11 @@ export class HomePage {
 
 public items:any[] = [];
 searchQuery: string;
-username:string = '';
-password:string = '';
-auth_type:string = "N/A";
-is_auth_error:boolean = false;
-auth_status:string = null;
-loggedInUser: string = '';
 
 public UsuarioLogado: string;
 NomeCliente: string = ' ';
 CodCliente: string = ' ';
-NomedoUsuario: string = 'Rosana';
+NomedoUsuario: string;
 DataPagamento: string = new Date().toISOString();
 
   constructor(
@@ -35,9 +31,25 @@ DataPagamento: string = new Date().toISOString();
     public actionSheetCtrl: ActionSheetController,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
-    public backand: BackandService)
+    public backand: BackandService,
+    public userServices: Users)
   {
 
+  }
+
+  public abrelistaDesejo()
+  {
+    this.navCtrl.push(Listadedesejos)
+  }
+
+  private pegadadosUsuario()
+  {
+    this.userServices.pegaUsuario()
+  }
+
+  public abreLogin()
+  {
+    this.navCtrl.push(Login)
   }
 
   launchModalMeuscliente()
@@ -68,7 +80,7 @@ DataPagamento: string = new Date().toISOString();
     ((res: any) =>
         {
           this.items = res.data;
-          console.log('Passeio no carrega vendas' + this.items);
+//          console.log('Passeio no carrega vendas' + this.items);
         },(err: any) =>
         {
           alert(err.data);
@@ -101,7 +113,13 @@ DataPagamento: string = new Date().toISOString();
 
   public abreProdutos()
   {
-    this.navCtrl.push(Produtos)
+    let data =
+    {
+      Cliente: this.NomeCliente,
+      CodCliente: this.CodCliente,
+      Usuario: this.NomedoUsuario
+    };
+    this.navCtrl.push(Produtos, data)
   }
 
   public abreCompartilhar()
@@ -116,6 +134,7 @@ DataPagamento: string = new Date().toISOString();
   ionViewDidEnter()
   {
   //  console.log('ionViewDidEnter Home');
-    this.carregaVendas();
+//    this.carregaVendas();
+    this.pegadadosUsuario();
   }
 }
