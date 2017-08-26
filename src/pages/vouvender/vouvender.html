@@ -36,7 +36,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Quantidade</ion-label>
-        <ion-input type="number" [(ngModel)]="QuantidadeEscolhida"></ion-input>
+        <ion-input type="number" [min]=1 [max]="Quantidadeemestoque" [(ngModel)]="QuantidadeEscolhida"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Preço</ion-label>
@@ -52,13 +52,14 @@
       </ion-item>
 -->
   </ion-item-group>
-  <button ion-button color="secondary" block (click)="fechamentoVenda()">Confirmação da Venda</button>
-
+  <div text-center>
+    <button ion-button color="secondary" round (click)="fechamentoVenda()">Confirmação da Venda</button>
+  </div>
 </ion-content>
 
 <ion-footer>
   <ion-navbar color="secondary">
-    <button ion-button clear (click)="addCliente()">
+    <button ion-button clear color="light" (click)="addCliente()">
         <ion-icon name="contacts"></ion-icon>
     </button>
     <div *ngIf="NomeCliente!=' ' ; elseBlock">

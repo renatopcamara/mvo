@@ -12,6 +12,29 @@
 
 <ion-content padding>
 
+<p>Para cadastrar novo cliente, preencha os campos abaixo e clique em SALVAR.</p>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Número Celular</ion-label>
+      <ion-input type="tel" [(ngModel)]="whatsapp"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Número Fixo</ion-label>
+      <ion-input type="tel" [(ngModel)]="fixo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>E-Mail</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div text-center>
+    <button ion-button color="light" round (click)="novoItem()">Salvar</button>
+  </div>
+
   <ion-list>
     <p>Selecione um dos clientes da lista abaixo:</p>
     <ion-item-sliding *ngFor="let item of items">
@@ -29,33 +52,10 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
-<p>Para cadastrar novo cliente, preencha os campos abaixo e clique em SALVAR.</p>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Whatsapp</ion-label>
-      <ion-input type="tel" [(ngModel)]="whatsapp"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Fixo</ion-label>
-      <ion-input type="tel" [(ngModel)]="fixo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>E-Mail</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-  </ion-list>
-
-  <button ion-button color="light" block (click)="novoItem()">Salvar</button>
-
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light">
+  <ion-navbar color="danger">
     <div *ngIf="NomeCliente!=' ' ; elseBlock">
       <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
     </div>

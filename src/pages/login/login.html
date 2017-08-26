@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>Registre-se</ion-title>
+    <ion-title text-center>Log In</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,12 +28,12 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button (click)="logar()" color="success">Entrar</button>
-  <div>
-    <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
+
+  <div text-center>
+    <button ion-button (click)="logar()" color="success">Salvar</button>
   </div>
-  <div>
-    <button ion-button (click)="deslogar()">Sair</button>
+  <div text-center>
+    <button ion-button (click)="deslogar()">Log Out</button>
   </div>
 <!-- <button ion-button *ngIf="this.userServices.auth_status == 'OK'" (click)="deslogar()">Sair {{this.userServices.loggedInUser}}</button> -->
 </ion-content>

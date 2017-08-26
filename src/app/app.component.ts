@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-//import { ListPage } from '../pages/list/list';
+import { Vouvender } from '../pages/vouvender/vouvender';
 
 import { Produtos } from '../pages/produtos/produtos';
 import { Login } from '../pages/login/login';
@@ -35,7 +35,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
 //      { title: 'Meus Estoques', component: Estoquesegmentado },
-//      { title: 'Vou Vender', component: Vouvender },
+      { title: 'Vou Vender', component: Vouvender },
 //      { title: 'Meus Clientes', component: Meusclientes },
       { title: 'Catálogo de Produtos', component: Produtos },
 //      { title: 'Compartilhamentos', component: Compartilhamento },

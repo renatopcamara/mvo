@@ -23,6 +23,7 @@ items:any[] = [];
 DesejoID: string;
 NomeCliente: string;
 CodCliente: string = ' ';
+Vazio: number;
 
   constructor
   ( public navCtrl: NavController,
@@ -45,7 +46,15 @@ CodCliente: string = ' ';
     ((res: any) =>
         {
           this.items = res.data;
-//          console.log(this.items);
+          if (this.items.length ==0)
+          {
+            this.Vazio = 0
+          }
+          else
+          {
+            this.Vazio = 1
+          }
+          console.log(this.items);
         },(err: any) =>
         {
           alert(err.data);

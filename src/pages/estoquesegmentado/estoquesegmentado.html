@@ -13,13 +13,12 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Selecione PRÓPRIO para ver seu estoque ou COMPARTILHADO para ver o estoque dos parceiros ou utilize a campo busca para filtrar o estoque pelo nome do produto.</p>
-
-  <ion-searchbar
+    <ion-searchbar
     [(ngModel)]="searchQuery"
     placeholder = "busca"
     showCancelButton = true
     type = "text"
+    (ionCancel)="getItemsMeuEstoque()"
     (ionInput)="filterItemsMeuEstoque($event.target.value)">
   </ion-searchbar>
 
@@ -72,8 +71,8 @@
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light">
-    <button end ion-button clear (click)="addCliente()">
+  <ion-navbar color="primary">
+    <button end ion-button color="light" clear (click)="addCliente()">
         <ion-icon name="contacts"></ion-icon>
     </button>
     <div *ngIf="NomeCliente!=' ' ; elseBlock">

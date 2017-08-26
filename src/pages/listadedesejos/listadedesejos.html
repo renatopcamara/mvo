@@ -17,27 +17,32 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of items" >
-      <button ion-item (click)="selecionaProduto()">
-        <p>Código Hinode: {{ item.CodProduto }}</p>
-        <p>{{ item.NomedoProduto }}</p>
-        <p>Qtd: {{ item.Quantidade }}  Preço Unitário: R${{ item.Preco  }}</p>
-        <p>Cliente: {{ item.NomeCliente }}</p>
-      </button>
-      <ion-item-options>
-        <button ion-button color="light" icon-start (click)="retiradesejos(item.id)">
-          <ion-icon name="trash"></ion-icon>
-          Desistir
-        </button>
-        <button ion-button icon-start (click)="compradesejo(item)">
-          <ion-icon name="card"></ion-icon>
-          Comprei
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <div *ngIf="Vazio == 0">
+    <p>A lista de desejos esta vazia. Consulte o catálogo e selecione o produto que desejar.</p>
+  </div>
 
+  <div *ngIf="Vazio == 1">
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of items" >
+        <button ion-item (click)="selecionaProduto()">
+          <p>Código Hinode: {{ item.CodProduto }}</p>
+          <p>{{ item.NomedoProduto }}</p>
+          <p>Qtd: {{ item.Quantidade }}  Preço Unitário: R${{ item.Preco  }}</p>
+          <p>Cliente: {{ item.NomeCliente }}</p>
+        </button>
+        <ion-item-options>
+          <button ion-button color="light" icon-start (click)="retiradesejos(item.id)">
+            <ion-icon name="trash"></ion-icon>
+            Desistir
+          </button>
+          <button ion-button icon-start (click)="compradesejo(item)">
+            <ion-icon name="card"></ion-icon>
+            Comprei
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
 </ion-content>
 
 <ion-footer>

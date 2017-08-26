@@ -45,7 +45,7 @@ logar()
 {
   this.userServices.getAuthTokenSimple(this.username, this.password)
   this.navCtrl.pop();
-  this.showToast('middle')
+//  this.showToast('middle')
 }
   ionViewDidLoad() {
 //    console.log('ionViewDidLoad Login');

@@ -30,6 +30,7 @@ export class Vouvender {
   NomedoUsuario: string;
   CodProduto:string;
   private items:any[] = [];
+  valorfinal: number;
 
   constructor(
     public navCtrl: NavController,
@@ -82,7 +83,7 @@ export class Vouvender {
         {
           text: 'Sim',
           handler: () => {
-            console.log('Sim clicked');
+  //          console.log('Sim clicked');
             this.validaQtdEstoque();
 //            this.enviaSMS();
           }
@@ -94,16 +95,14 @@ export class Vouvender {
 
   public validaQtdEstoque()
   {
-    let valorFinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
-    if (valorFinal == 0 )
+    this.valorfinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
+    if ( this.valorfinal <= 0 )
     {
-      console.log('valor final = 0');
-      this.apagaItemEstoque();
-      this.novaVenda();
+//      console.log('valor final <= 0');
     }
     else
     {
-      console.log('valor final =' + valorFinal);
+//      console.log('valor final =' , this.valorfinal, 'Qtd Estoque=' , this.Quantidadeemestoque , 'Qtd Escolhida', this.QuantidadeEscolhida);
       this.atualizaEstoques();
     }
   }

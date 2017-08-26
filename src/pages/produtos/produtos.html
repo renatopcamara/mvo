@@ -22,6 +22,7 @@
     placeholder="busca"
     showCancelButton = true
     type = "text"
+    (ionCancel)="getItems()"
     (ionInput)="filterItemsProdutos($event.target.value)">
   </ion-searchbar>
   <ion-list>
@@ -47,8 +48,8 @@
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light">
-    <button ion-button icon-end clear (click)="addCliente()">
+  <ion-navbar color="dark">
+    <button ion-button clear color="light" (click)="addCliente()">
         <ion-icon name="contacts"></ion-icon>
     </button>
     <div *ngIf="NomeCliente!=' '">
