@@ -21,7 +21,7 @@ export class Vouvender {
   QuantidadeEscolhida: number;
   Quantidadeemestoque: number;
   Datapgto: string = new Date().toISOString();
-  Dataentrega: string = new Date().toISOString();
+  Dataentrega: string = new Date().toISOString().substring(0,10);
   Preco: number;
   QtdMax: any;
   NomeCliente: string;
@@ -96,14 +96,22 @@ export class Vouvender {
   public validaQtdEstoque()
   {
     this.valorfinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
-    if ( this.valorfinal <= 0 )
+    if ( this.valorfinal < 0 )
     {
-//      console.log('valor final <= 0');
+      console.log('valor final <= 0');
     }
     else
     {
-//      console.log('valor final =' , this.valorfinal, 'Qtd Estoque=' , this.Quantidadeemestoque , 'Qtd Escolhida', this.QuantidadeEscolhida);
-      this.atualizaEstoques();
+      console.log(this.valorfinal);
+      if (this.valorfinal == 0)
+      {
+        this.apagaItemEstoque();
+        this.novaVenda();
+      }
+      else
+      {
+        this.atualizaEstoques();
+      }
     }
   }
 
@@ -135,7 +143,7 @@ export class Vouvender {
       Qtd: this.QuantidadeEscolhida,
       ValorPago: this.Preco,
       DataPagamento: this.Datapgto,
-      DataEntrega: this.Dataentrega,
+      DataEntrega: this.Dataentrega.substring(0,10),
       CodProduto: this.ProdutoParaVender,
       idCliente: this.CodCliente,
       NomedoCliente: this.NomeCliente,

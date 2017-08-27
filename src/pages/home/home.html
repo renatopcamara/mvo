@@ -38,62 +38,29 @@
 <!-- <button ion-button (click)="launchProvider()">next</button>
 -->
 
-<p *ngIf="this.userServices.loggedInUser != 'anonymous'">
-  Escolha o cliente que voce está trabalhando clicando no botão abaixo:
-</p>
 <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
   <button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
+  <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
+  <button ion-button round icon-right color="dark" (click)="abreProdutos()">Catálogo de Produtos
+    <ion-icon name="cart"></ion-icon>
+  </button>
+  <button ion-button round icon-right color="secondary" (click)="abrelistaDesejo()">Lista de Desejos
+    <ion-icon name="basket"></ion-icon>
+  </button>
 </div>
+
 <div *ngIf="this.userServices.loggedInUser !='anonymous' ; elseBlock">
   <div *ngIf="NomeCliente !=' '">
     <ion-list>
       <p>Últimas compras do cliente: {{NomeCliente}}</p>
         <ion-item *ngFor="let item of items" >
           <p>{{ item.CodProduto}}</p>
-          <p>Data: {{ item.DataPagamento }}</p>
+          <p>Data: {{ item.DataEntrega.substring(0,10) }}</p>
           <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}</p>
         </ion-item>
       </ion-list>
     </div>
   </div>
-
-  <p *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    Consulte seu estoque e boas vendas.
-  </p>
-  <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
-    <p></p>
-  </div>
-
-  <p *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    Para consultar todos os produtos Hinode, clique no botão abaixo.
-  </p>
-  <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    <button ion-button round icon-right color="dark" (click)="abreProdutos()">Catálogo de Produtos
-    <ion-icon name="cart"></ion-icon>
-    </button>
-    <p></p>
-  </div>
-
-  <p *ngIf="this.userServices.loggedInUser != 'anonymous'">Sua lista de desejo pode ser acessada pelo botão:</p>
-  <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    <button ion-button round icon-right color="secondary" (click)="abrelistaDesejo()">Lista de Desejos
-    <ion-icon name="cart"></ion-icon>
-    </button>
-    <p></p>
-  </div>
-
-<!--
-  <p>Os consultores que voce compartilha seu estoque voce encontra no botão seguinte.</p>
-  <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
-    <button ion-button round icon-right color="light" (click)="abreCompartilhar()">
-      Compartilhamento
-    <ion-icon name="share"></ion-icon>
-    </button>
-  </div>
--->
-
-<!--   <button ion-button block (click)="abreLogin()" color="error">LOG IN</button> -->
 
 </ion-content>
 

@@ -18,7 +18,7 @@ import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado'
 import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 import { Login } from '../pages/login/login';
 import { Listadedesejos } from '../pages/listadedesejos/listadedesejos';
-
+import { Estatisticas } from '../pages/estatisticas/estatisticas';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -43,6 +43,7 @@ const cloudSettings: CloudSettings = {
     Compartilhamento,
     Login,
     Meusclientes,
+    Estatisticas,
     Listadedesejos
   ],
   imports: [
@@ -62,6 +63,7 @@ const cloudSettings: CloudSettings = {
     Compartilhamento,
     Login,
     Meusclientes,
+    Estatisticas,
     Listadedesejos
   ],
   providers: [

@@ -58,6 +58,7 @@ export class Users
         this.username = '';
         this.password = '';
 //      console.log('signin succeeded with user:' + res.data.username);
+        this.pegaUsuario();
       }
     ).catch(err =>
       {

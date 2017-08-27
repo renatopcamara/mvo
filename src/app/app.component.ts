@@ -5,9 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { Vouvender } from '../pages/vouvender/vouvender';
-
+import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 import { Produtos } from '../pages/produtos/produtos';
 import { Login } from '../pages/login/login';
+import { Estatisticas } from '../pages/estatisticas/estatisticas';
 
 
 import { BackandService } from '@backand/angular2-sdk';
@@ -35,10 +36,11 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
 //      { title: 'Meus Estoques', component: Estoquesegmentado },
-      { title: 'Vou Vender', component: Vouvender },
+//      { title: 'Vou Vender', component: Vouvender },
 //      { title: 'Meus Clientes', component: Meusclientes },
       { title: 'Catálogo de Produtos', component: Produtos },
-//      { title: 'Compartilhamentos', component: Compartilhamento },
+      { title: 'Compartilhamentos', component: Compartilhamento },
+      { title: 'Estatísticas', component: Estatisticas },
       { title: 'Log In', component: Login }
 //      { title: 'List Page', component: ListPage}
       ];

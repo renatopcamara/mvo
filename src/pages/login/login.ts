@@ -43,7 +43,8 @@ deslogar()
 
 logar()
 {
-  this.userServices.getAuthTokenSimple(this.username, this.password)
+  this.userServices.getAuthTokenSimple(this.username, this.password);
+//  this.userServices.pegaUsuario();
   this.navCtrl.pop();
 //  this.showToast('middle')
 }

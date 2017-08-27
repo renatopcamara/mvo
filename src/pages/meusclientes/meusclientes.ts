@@ -150,6 +150,7 @@ export class Meusclientes {
   ionViewDidLoad()
   {
 //    console.log('ionViewDidLoad Meusclientes');
+    this.userServices.pegaUsuario();
   }
 
   ionViewDidEnter() {
