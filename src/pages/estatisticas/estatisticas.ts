@@ -33,7 +33,7 @@ public items:any[] = [];
     let params =
     {
 
-      filter: this.backand.helpers.filter.create('CodUsuario', 'equals', this.userServices.loggedInUser),
+      usuario: this.userServices.loggedInUser,
   //      filter: this.backand.helpers.filter.create('idCliente', 'equals', '34'),
     }
   //    console.log('parametros:'+ params)
@@ -41,7 +41,7 @@ public items:any[] = [];
     ((res: any) =>
         {
           this.items = res.data;
-          console.log(res.data);
+          console.log(this.userServices.loggedInUser , res.data);
         },(err: any) =>
         {
           alert(err.data);

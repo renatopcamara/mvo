@@ -143,7 +143,7 @@ export class Vouvender {
       Qtd: this.QuantidadeEscolhida,
       ValorPago: this.Preco,
       DataPagamento: this.Datapgto,
-      DataEntrega: this.Dataentrega.substring(0,10),
+      DataEntrega: this.Datapgto.substring(0,10),
       CodProduto: this.ProdutoParaVender,
       idCliente: this.CodCliente,
       NomedoCliente: this.NomeCliente,

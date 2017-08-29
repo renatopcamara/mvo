@@ -4,14 +4,13 @@ import { BackandService } from '@backand/angular2-sdk';
 
 /*
   Generated class for the Users provider.
-
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
 @Injectable()
 export class Users
 {
-  username:string = '';
+  username: string;
   password:string = '';
   auth_type:string = "N/A";
   is_auth_error:boolean = false;
