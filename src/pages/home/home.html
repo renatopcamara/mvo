@@ -49,6 +49,10 @@
   </button>
 </div>
 
+<ion-list *ngFor="let item of lucro">
+  <p>Seu lucro até o momento é de: R$ {{ item.SomaDeValorPago }}</p>
+</ion-list>
+
 <div *ngIf="this.userServices.loggedInUser !='anonymous' ; elseBlock">
   <div *ngIf="NomeCliente !=' '">
     <ion-list>

@@ -17,6 +17,7 @@ import { Listadedesejos } from '../listadedesejos/listadedesejos';
 export class HomePage {
 
 public items:any[] = [];
+public lucro:any[] = [];
 searchQuery: string;
 
 public UsuarioLogado: string;
@@ -34,7 +35,25 @@ DataPagamento: string = new Date().toISOString();
     public backand: BackandService,
     public userServices: Users)
   {
+  
+  }
 
+  private carregaLucro()
+  {
+    let params =
+    {
+      usuario: this.userServices.loggedInUser,
+    }
+    this.backand.query.get('LucroTotal',params).then
+    ((res: any) =>
+        {
+          this.lucro = res.data;
+          console.log(res.data);
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
   }
 
   public abrelistaDesejo()
@@ -143,5 +162,6 @@ DataPagamento: string = new Date().toISOString();
   //  console.log('ionViewDidEnter Home');
     this.carregaVendas();
     this.pegadadosUsuario();
+    this.carregaLucro();
   }
 }
