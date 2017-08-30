@@ -38,8 +38,8 @@ export class MyApp {
 //      { title: 'Meus Estoques', component: Estoquesegmentado },
 //      { title: 'Vou Vender', component: Vouvender },
 //      { title: 'Meus Clientes', component: Meusclientes },
-      { title: 'Catálogo de Produtos', component: Produtos },
-      { title: 'Compartilhamentos', component: Compartilhamento },
+//      { title: 'Catálogo de Produtos', component: Produtos },
+//      { title: 'Compartilhamentos', component: Compartilhamento },
       { title: 'Estatísticas', component: Estatisticas },
       { title: 'Log In', component: Login }
 //      { title: 'List Page', component: ListPage}

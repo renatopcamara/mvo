@@ -18,7 +18,18 @@
 
 <ion-content padding>
 
-<p> Página em construção. </p>
-<p></p>
-<p>Será apresentado todos os consultores que estão compartilhando seus estoques com o da Rosana.</p>
+  <ion-list>
+      <ion-item>
+        <ion-label>Visibilidade Geral</ion-label>
+        <ion-toggle [(ngModel)]="visibilidade" (ionChange)="atualizaUser()" ></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{ item.firstName }}</ion-label>
+        <ion-toggle [(ngModel)]="compart" ></ion-toggle>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

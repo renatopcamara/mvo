@@ -46,6 +46,10 @@
         <ion-label floating>Data Pagamento</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Datapgto"></ion-datetime>
       </ion-item>
+      <ion-item>
+        <ion-label>Computar Lucro</ion-label>
+        <ion-checkbox color="dark" [(ngModel)]="temlucro" (ionChange)="updatelucro()"></ion-checkbox>
+      </ion-item>
 <!--      <ion-item>
         <ion-label floating>Data Entrega</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Dataentrega">dataentrega</ion-datetime>

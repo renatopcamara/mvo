@@ -17,6 +17,8 @@
 
 
 <ion-content padding>
+  <p *ngIf="userServices.loggedInUser == 'anonymous'">Preencha os dados abaixo para se logar no sistema. </p>
+  <p *ngIf="userServices.loggedInUser != 'anonymous'">Bem vindo {{ userServices.loggedInUser }}. Você está logado. </p>
   <ion-list>
     <ion-item>
         <ion-label floating>E-mail</ion-label>
@@ -28,12 +30,13 @@
     </ion-item>
   </ion-list>
 
+  <div text-center>
+    <button ion-button *ngIf="userServices.loggedInUser == 'anonymous'" (click)="logar()" >Log In</button>
+  </div>
+  <div text-center>
+    <button ion-button *ngIf="userServices.loggedInUser != 'anonymous'" (click)="deslogar()">Log Out</button>
+  </div>
 
-  <div text-center>
-    <button ion-button (click)="logar()" color="success">Salvar</button>
-  </div>
-  <div text-center>
-    <button ion-button (click)="deslogar()">Log Out</button>
-  </div>
+
 <!-- <button ion-button *ngIf="this.userServices.auth_status == 'OK'" (click)="deslogar()">Sair {{this.userServices.loggedInUser}}</button> -->
 </ion-content>

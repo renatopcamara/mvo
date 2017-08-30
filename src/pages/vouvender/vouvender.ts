@@ -31,6 +31,8 @@ export class Vouvender {
   CodProduto:string;
   private items:any[] = [];
   valorfinal: number;
+  Lucro: boolean = true;
+  temlucro: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -135,8 +137,25 @@ export class Vouvender {
     );
   }
 
+
+updatelucro()
+{
+  if (this.temlucro)
+  {
+    console.log(this.temlucro);
+  }else
+  {
+    console.log(this.temlucro);
+  }
+
+}
+
   public novaVenda()
   {
+    if (this.temlucro == false)
+    {
+      this.Preco = 0;
+    }
     let item =
     {
       IDEstoque: this.CodEstoque,
@@ -147,7 +166,8 @@ export class Vouvender {
       CodProduto: this.ProdutoParaVender,
       idCliente: this.CodCliente,
       NomedoCliente: this.NomeCliente,
-      CodUsuario: this.userServices.loggedInUser
+      CodUsuario: this.userServices.loggedInUser,
+      Lucro: this.temlucro
     };
     console.log('Cliente:' + this.NomeCliente +' ID:' + this.CodCliente)
     this.backand.object.create('Vendas',item).then

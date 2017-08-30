@@ -17,6 +17,7 @@ export class Users
   auth_status:string = null;
   loggedInUser: string = '';
   loggedInUserID: string ='';
+  Compartilha: boolean;
 
   constructor(
     public backand: BackandService)
@@ -35,6 +36,7 @@ export class Users
         this.loggedInUser = res.data.firstName;
         this.loggedInUserID = res.data.userId;
         this.auth_status = 'OK';
+        this.Compartilha = res.data.Visible;
 //        console.log('passei no pega usuarios do provider', res.data)
       }).catch(err =>
       {

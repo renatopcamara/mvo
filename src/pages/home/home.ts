@@ -35,7 +35,7 @@ DataPagamento: string = new Date().toISOString();
     public backand: BackandService,
     public userServices: Users)
   {
-  
+
   }
 
   private carregaLucro()
@@ -48,7 +48,7 @@ DataPagamento: string = new Date().toISOString();
     ((res: any) =>
         {
           this.lucro = res.data;
-          console.log(res.data);
+  //        console.log(res.data);
         },(err: any) =>
         {
           alert(err.data);
@@ -87,6 +87,7 @@ DataPagamento: string = new Date().toISOString();
       this.NomeCliente = data.NomeCliente;
       this.CodCliente = data.CodCliente;
       this.carregaVendas();
+      this.carregaLucro();
     });
     modal.present();
 //    console.log("passei no launchModalPage");
@@ -160,7 +161,7 @@ DataPagamento: string = new Date().toISOString();
   ionViewDidEnter()
   {
   //  console.log('ionViewDidEnter Home');
-    this.carregaVendas();
+//    this.carregaVendas();
     this.pegadadosUsuario();
     this.carregaLucro();
   }

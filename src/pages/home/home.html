@@ -39,18 +39,25 @@
 -->
 
 <div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
-  <button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
-  <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
+  <button ion-button round icon-right color="danger" (click)="launchModalMeuscliente()">Meus Clientes
+    <ion-icon name="contacts"></ion-icon>
+  </button>
+  <button ion-button round icon-right color="primary" (click)="abreMeuestoque()">Meus Estoques
+    <ion-icon name="albums"></ion-icon>
+  </button>
   <button ion-button round icon-right color="dark" (click)="abreProdutos()">Catálogo de Produtos
     <ion-icon name="cart"></ion-icon>
   </button>
   <button ion-button round icon-right color="secondary" (click)="abrelistaDesejo()">Lista de Desejos
     <ion-icon name="basket"></ion-icon>
   </button>
+  <button ion-button round icon-right color="light" (click)="abreCompartilhar()">Compartilhamento
+    <ion-icon name="switch"></ion-icon>
+  </button>
 </div>
 
 <ion-list *ngFor="let item of lucro">
-  <p>Seu lucro até o momento é de: R$ {{ item.SomaDeValorPago }}</p>
+  <p>Seu lucro até o momento é de: R$ {{ item.SomaDeValorPago / 2 }}</p>
 </ion-list>
 
 <div *ngIf="this.userServices.loggedInUser !='anonymous' ; elseBlock">

@@ -38,14 +38,13 @@ export class Login {
 deslogar()
 {
   this.userServices.signOut();
-  this.navCtrl.pop();
 }
 
 logar()
 {
   this.userServices.getAuthTokenSimple(this.username, this.password);
 //  this.userServices.pegaUsuario();
-  this.navCtrl.pop();
+//  this.navCtrl.pop();
 //  this.showToast('middle')
 }
   ionViewDidLoad() {
