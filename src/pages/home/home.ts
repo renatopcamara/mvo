@@ -161,7 +161,7 @@ DataPagamento: string = new Date().toISOString();
   ionViewDidEnter()
   {
   //  console.log('ionViewDidEnter Home');
-//    this.carregaVendas();
+    this.carregaVendas();
     this.pegadadosUsuario();
     this.carregaLucro();
   }
