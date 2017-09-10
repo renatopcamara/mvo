@@ -32,16 +32,19 @@ export class Users
       this.backand.user.getUserDetails().then
       (res =>
       {
-        this.auth_type = res.data.token_type;
         this.loggedInUser = res.data.firstName;
         this.loggedInUserID = res.data.userId;
         this.auth_status = 'OK';
         this.Compartilha = res.data.Visible;
+        //  this.auth_type = res.data.token_type;
+        this.auth_type = res.data.token_type == 'Anonymous' ? 'Anonymous' : 'Token';
 //        console.log('passei no pega usuarios do provider', res.data)
       }).catch(err =>
       {
         console.log(err);
         this.loggedInUser = 'anonymous';
+        this.auth_status = null;
+        this.auth_type = null;
       });
 //    }
   }

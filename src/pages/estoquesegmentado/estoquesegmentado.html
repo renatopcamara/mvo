@@ -35,11 +35,11 @@
 
   <div [ngSwitch]="origem">
     <ion-list *ngSwitchCase="'mine'">
-      <ion-item-sliding *ngFor="let item of items">
 
+      <ion-item-sliding *ngFor="let item of items">
         <button ion-item (click)="detalhesProduto()">
           <p>Usuário: {{ item.CodUsuario}}</p>
-          <p>{{ item.NomedoProduto }}</p>
+          <p>{{item.CodProduto}} - {{ item.NomedoProduto }}</p>
           <p>Quantidade: {{ item.Quantidade  }}</p>
         </button>
         <ion-item-options>
@@ -47,23 +47,23 @@
             <ion-icon name="cart"></ion-icon>
             Vender
           </button>
-  <!--        <button ion-button color="secondary" icon-start (click)="Chegou(item.NomedoProduto)">
-            <ion-icon name="checkbox"></ion-icon>
-            Chegou
-          </button> -->
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'others'">
       <ion-item-sliding *ngFor="let item of items">
-
         <button ion-item (click)="detalhesProduto()">
           <p>Usuário: {{ item.CodUsuario}}</p>
-          <p>{{ item.NomedoProduto }}</p>
+          <p>{{item.CodProduto}} - {{ item.NomedoProduto }}</p>
           <p>Quantidade: {{ item.Quantidade  }}</p>
         </button>
-
+        <ion-item-options>
+          <button ion-button color="secondary" icon-start (click)="listadedesejos(item,'Desejo')">
+            <ion-icon name="basket"></ion-icon>
+            Desejo
+          </button>
+        </ion-item-options>
       </ion-item-sliding>
     </ion-list>
   </div>

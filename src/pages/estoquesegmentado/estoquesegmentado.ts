@@ -98,12 +98,12 @@ public getItemsOutrosEstoques()
     filter: this.backand.helpers.filter.create('CodUsuario', 'notEquals', this.userServices.loggedInUser),
     sort: this.backand.helpers.sort.create('NomedoProduto', 'asc')
   }
-  console.log('parametros:'+params)
+//  console.log('parametros:'+params)
   this.backand.object.getList('Estoques',params).then
   ((res: any) =>
       {
         this.items = res.data;
-        console.log('Passei no estoque dos outros');
+  //      console.log('Passei no estoque dos outros');
       },(err: any) =>
       {
         alert(err.data);
@@ -136,7 +136,7 @@ public filterItemsMeuEstoque(searchbar)
   ((res: any) =>
       {
         this.items = res.data;
-        console.log('passou no getlist com filtro');
+  //      console.log('passou no getlist com filtro');
         this.navCtrl.getActive()
       },(err: any) =>
       {
@@ -208,6 +208,75 @@ VouVender(nomeProduto)
     });
     modal.present();
 //    console.log("passei no addcliente do estoquesegmentado");
+  }
+
+  listadedesejos(nomeProduto,Modelo)
+  {
+    this.list.closeSlidingItems()
+
+    let alert = this.alertCtrl.create
+    ({
+      title: 'Aviso',
+      subTitle: 'Qual a quantidade de produtos que você deseja?',
+      inputs:
+      [{
+          name: 'qtd',
+          placeholder: 'Quantidade',
+          type: 'tel',
+        },
+      ],
+      buttons:
+      [{
+        text: 'Desistir',
+        role: 'cancel',
+        handler: data =>
+          {
+            console.log('Cancelou');
+          }
+        },
+        {
+          text: 'Salvar',
+          handler: data =>
+          {
+            if (data.qtd == 0 )
+            {
+  //              console.log('Quantidade desejada zero');
+            } else
+            {
+  //              console.log('Salvou quantidade desejada:' + data.qtd);
+              let item =
+              {
+                NomedoProduto: nomeProduto.Nome,
+                Quantidade: data.qtd,
+                CodProduto: nomeProduto.CodProduto,
+                CodUsuario: this.userServices.loggedInUser,
+                //CodUsuario: nomeProduto.CodUsuario,
+                Preco: nomeProduto.Preco,
+                NomeCliente: this.NomeCliente,
+                Status: Modelo,
+              };
+              this.SalvaNovoDesejo(item);
+              return true;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  SalvaNovoDesejo(item)
+  {
+    console.log(item)
+    this.backand.object.create('Desejos',item).then
+    ((res: any) =>
+      {
+  //        console.log('salvei desejo...');
+      },(err: any) =>
+      {
+        alert(err.data);
+      }
+    );
   }
 
   ionViewDidEnter()

@@ -67,7 +67,7 @@
         <ion-item *ngFor="let item of items" >
           <p>{{ item.CodProduto}}</p>
           <p>Data: {{ item.DataEntrega.substring(0,10) }}</p>
-          <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}</p>
+          <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}  Total: {{ item.ValorPago * item.Qtd}}</p>
         </ion-item>
       </ion-list>
     </div>

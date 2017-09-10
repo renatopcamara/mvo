@@ -31,13 +31,13 @@
           <p>Cliente: {{ item.NomeCliente }}</p>
         </button>
         <ion-item-options>
-          <button ion-button color="light" icon-start (click)="retiradesejos(item.id)">
+          <button ion-button color="danger" icon-start (click)="retiradesejos(item.id)">
             <ion-icon name="trash"></ion-icon>
             Desistir
           </button>
           <button ion-button icon-start (click)="compradesejo(item)">
             <ion-icon name="card"></ion-icon>
-            Comprei
+            Chegou
           </button>
         </ion-item-options>
       </ion-item-sliding>
