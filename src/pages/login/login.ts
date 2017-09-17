@@ -17,23 +17,23 @@ export class Login {
   loggedInUser: string = '';
 
   constructor(
-    public navCtrl: NavController,
-    public Backand: BackandService,
-    public toastCtrl: ToastController,
-    public userServices: Users)
-    {
+  public navCtrl: NavController,
+  public Backand: BackandService,
+  public toastCtrl: ToastController,
+  public userServices: Users)
+  {
 
-    }
+  }
 
-    showToast(position: string)
-    {
-      let toast = this.toastCtrl.create({
-        message: 'Mmmm, buttered toast',
-        duration: 2000,
-        position: position
-      });
-      toast.present(toast);
-    }
+  showToast(position: string, Texto: string)
+  {
+    let toast = this.toastCtrl.create({
+      message: Texto,
+      duration: 2000,
+      position: 'center'
+  });
+    toast.present(toast);
+  }
 
 deslogar()
 {
@@ -43,9 +43,6 @@ deslogar()
 logar()
 {
   this.userServices.getAuthTokenSimple(this.username, this.password);
-//  this.userServices.pegaUsuario();
-//  this.navCtrl.pop();
-//  this.showToast('middle')
 }
   ionViewDidLoad() {
 //    console.log('ionViewDidLoad Login');

@@ -35,6 +35,12 @@ DataPagamento: string = new Date().toISOString();
     public backand: BackandService,
     public userServices: Users)
   {
+    //this.userServices.showToastConnection('auth status: ' +this.userServices.auth_status + "authloggeuser: " + this.userServices.loggedInUser)
+  //  if (this.userServices.loggedInUser =='')
+    //{
+    //  console.log("nnn"+this.userServices.loggedInUser+"nnn");
+  //  }
+    //console.log("nnn"+this.userServices.loggedInUser+"nnn");
 
   }
 

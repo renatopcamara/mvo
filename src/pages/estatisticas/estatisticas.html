@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-  <ion-item *ngFor="let item of items" >
+  <ion-item text-wrap *ngFor="let item of items" >
     <p>{{ item.DataEntrega.substring(0,10) }} Vendas: R$ {{ item.SomaDeValorPago }} Lucro: R${{ item.SomaDeValorPago / 2 }}</p>
   </ion-item>
 </ion-content>

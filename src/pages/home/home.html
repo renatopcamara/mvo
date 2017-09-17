@@ -13,32 +13,20 @@
 <ion-content padding>
 
   <div>
-    <p *ngIf="this.userServices.loggedInUser == 'anonymous'">
+    <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
       Bem vindo ao sistema de estoque e controle de vendas do Consultor Hinode.
     </p>
-    <p *ngIf="this.userServices.loggedInUser == 'anonymous'">
+    <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
       Se você já é um consultor cadastrado para a utilização faça LOG IN.
     </p>
-    <p *ngIf="this.userServices.loggedInUser == 'anonymous'">
+    <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
       <button ion-button block (click)="abreLogin()" color="error">LOG IN</button>
     </p>
+    <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
+      Caso tenha interesse no acesso ao aplicativo ou queira ser um consultor Hinode, entre em contato com Rosana Andrade no telefone: 21 99997-1334</p>
   </div>
 
-<!--  <button ion-button (click)="carregaVendas()">Carregar vendas</button> -->
-<!--  <ion-list>
-    <ion-item>
-      <ion-label>Usuario</ion-label>
-      <ion-select [(ngModel)]="usuario">
-        <ion-option *ngFor="let item of items" value={{item.firstName}}>{{item.firstName}}</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
--->
-
-<!-- <button ion-button (click)="launchProvider()">next</button>
--->
-
-<div text-center *ngIf="this.userServices.loggedInUser != 'anonymous'">
+<div text-center *ngIf=" this.userServices.loggedInUser != '' && this.userServices.loggedInUser != 'anonymous'" >
   <button ion-button round icon-right color="danger" (click)="launchModalMeuscliente()">Meus Clientes
     <ion-icon name="contacts"></ion-icon>
   </button>
@@ -64,7 +52,7 @@
   <div *ngIf="NomeCliente !=' '">
     <ion-list>
       <p>Últimas compras do cliente: {{NomeCliente}}</p>
-        <ion-item *ngFor="let item of items" >
+        <ion-item text-wrap *ngFor="let item of items" >
           <p>{{ item.CodProduto}}</p>
           <p>Data: {{ item.DataEntrega.substring(0,10) }}</p>
           <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}  Total: {{ item.ValorPago * item.Qtd}}</p>

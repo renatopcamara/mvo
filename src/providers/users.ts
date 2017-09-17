@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { BackandService } from '@backand/angular2-sdk';
+import { ToastController, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the Users provider.
@@ -20,7 +21,9 @@ export class Users
   Compartilha: boolean;
 
   constructor(
-    public backand: BackandService)
+    public backand: BackandService,
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController)
   {
 //    console.log('Hello Users Provider');
   }
@@ -66,10 +69,33 @@ export class Users
       }
     ).catch(err =>
       {
+        let errorMessage: string = err.data.error_description;
+        this.auth_status = `Error: ${errorMessage}`;
         this.is_auth_error = true;
-        console.log(err);
+        console.log(this.auth_status , " - " , this.is_auth_error);
+        this.showAlert(this.auth_status);
       }
     );
+  }
+
+  public showToastConnection(Texto: string)
+  {
+    let toast = this.toastCtrl.create({
+      message: Texto,
+      duration: 3000,
+      position: 'middle'
+  });
+    toast.present(toast);
+  }
+
+  private showAlert(Texto)
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Error Message',
+      subTitle: Texto,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   public signOut()

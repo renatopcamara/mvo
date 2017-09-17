@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-  <p *ngIf="userServices.loggedInUser == 'anonymous'">Preencha os dados abaixo para se logar no sistema. </p>
+  <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">Preencha os dados abaixo para se logar no sistema. </p>
 
   <ion-list>
     <ion-item>
@@ -31,12 +31,12 @@
   </ion-list>
 
   <div text-center>
-    <button ion-button *ngIf="userServices.loggedInUser == 'anonymous'" (click)="logar()" >Log In</button>
+    <button ion-button *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'" (click)="logar()" >Log In</button>
   </div>
   <div text-center>
-    <button ion-button *ngIf="userServices.loggedInUser != 'anonymous'" (click)="deslogar()">Log Out</button>
+    <button ion-button *ngIf="this.userServices.loggedInUser != '' && this.userServices.loggedInUser != 'anonymous'" (click)="deslogar()">Log Out</button>
   </div>
-  <p *ngIf="userServices.loggedInUser != 'anonymous'">Bem vindo {{ userServices.loggedInUser }}. Você está logado. </p>
+  <p *ngIf="this.userServices.loggedInUser != '' && this.userServices.loggedInUser != 'anonymous'">Bem vindo {{ userServices.loggedInUser }}. Você está logado. </p>
 
 <!-- <button ion-button *ngIf="this.userServices.auth_status == 'OK'" (click)="deslogar()">Sair {{this.userServices.loggedInUser}}</button> -->
 </ion-content>
