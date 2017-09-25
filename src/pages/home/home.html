@@ -14,7 +14,7 @@
 
   <div>
     <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
-      Bem vindo ao sistema de estoque e controle de vendas do Consultor Hinode.
+      Bem vindo ao sistema de estoque e controle de vendas do Consultor independente Hinode.
     </p>
     <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
       Se você já é um consultor cadastrado para a utilização faça LOG IN.
@@ -22,8 +22,17 @@
     <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
       <button ion-button block (click)="abreLogin()" color="error">LOG IN</button>
     </p>
+
+    <p text-center *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
+      AVISO
+    </p>
     <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
-      Caso tenha interesse no acesso ao aplicativo ou queira ser um consultor Hinode, entre em contato com Rosana Andrade no telefone: 21 99997-1334</p>
+      Esse aplicativo é um protótipo. Sua utilização está restrita a equipe da Joana para avaliação e testes.
+      </p>
+    <p *ngIf="this.userServices.loggedInUser == '' || this.userServices.loggedInUser == 'anonymous'">
+      Sua utilização deve ser somente para esse fim. É proibida sua divulgação ou cópia sem o formal conhecimento e de acordo de Renato Câmara (renatopcamara@yahoo.com.br)
+      </p>
+
   </div>
 
 <div text-center *ngIf=" this.userServices.loggedInUser != '' && this.userServices.loggedInUser != 'anonymous'" >
