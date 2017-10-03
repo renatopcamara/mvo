@@ -28,7 +28,7 @@
           <p>Código Hinode: {{ item.CodProduto }}</p>
           <p>{{ item.NomedoProduto }}</p>
           <p>Qtd: {{ item.Quantidade }}  Preço Unitário: R${{ item.Preco  }}</p>
-          <p>Cliente: {{ item.NomeCliente }}</p>
+          <p>Cliente: {{ item.NomeCliente }} Fornecedor: {{ item.Fornecedor }}</p>
         </button>
         <ion-item-options>
           <button ion-button color="danger" icon-start (click)="retiradesejos(item.id)">

@@ -120,6 +120,7 @@ export class Produtos {
   {
     this.list.closeSlidingItems()
 
+    let qtd = 1;
     let alert = this.alertCtrl.create
     ({
       title: 'Aviso',
@@ -127,6 +128,7 @@ export class Produtos {
       inputs:
       [{
           name: 'qtd',
+          value: '1',
           placeholder: 'Quantidade',
           type: 'tel',
         },
@@ -159,6 +161,7 @@ export class Produtos {
                 Preco: nomeProduto.Preco,
                 NomeCliente: this.NomeCliente,
                 Status: Modelo,
+                Fornecedor: 'Hinode'
               };
               this.SalvaNovoDesejo(item);
               return true;

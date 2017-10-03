@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, List, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, List, AlertController, ModalController, ToastController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Users } from '../../providers/users'
 import { Meusclientes } from '../meusclientes/meusclientes';
@@ -31,7 +31,8 @@ Vazio: number;
     public alertCtrl: AlertController,
     public backand: BackandService,
     public modalCtrl: ModalController,
-    public userServices: Users)
+    public userServices: Users,
+    public toastCtrl: ToastController)
   {
     this.getItems()
   }
@@ -64,16 +65,39 @@ Vazio: number;
 
   retiradesejos(indice)
   {
-    this.backand.object.remove('Desejos', indice).then
-    ((res: any) =>
-        {
-          console.log('apagando indice '+ indice);
-          this.getItems();
-        },(err: any) =>
-        {
-          alert(err.data);
+    this.list.closeSlidingItems();
+    let alert = this.alertCtrl.create(
+    {
+      title: 'DESISTIR',
+      subTitle: 'Deseja realmente desistir desse desejo?',
+      buttons:[
+      {
+        text: 'Não',
+        role: 'cancel',
+        handler: () => {
+          console.log('Não clicked');
         }
-    );
+      },
+      {
+        text: 'Sim',
+        handler: () =>
+        {
+          this.presentToast('operação sendo registrada...');
+          this.backand.object.remove('Desejos', indice).then
+          ((res: any) =>
+          {
+//            console.log('apagando indice '+ indice);
+
+            this.getItems();
+          },(err: any) =>
+          {
+            console.log(err.data);
+          });
+        }
+      }]
+    });
+
+    alert.present()
   }
 
   compradesejo(infos)
@@ -156,6 +180,7 @@ Vazio: number;
 
   public DesejoviraEstoque(item,DesireID)
   {
+    this.presentToast('operação sendo registrada...');
     this.backand.object.create('Estoques',item).then
     ((res: any) =>
       {
@@ -163,7 +188,6 @@ Vazio: number;
         this.backand.object.remove('Desejos',DesireID).then
         ((res: any) =>
           {
-//            console.log('desejo apagado:' + DesireID);
             this.getItems();
           },(err: any) =>
           {
@@ -189,6 +213,15 @@ Vazio: number;
     modal.present();
   //    console.log("passei no addcliente do estoquesegmentado");
   }
+
+  private presentToast(mensagem) {
+      let toast = this.toastCtrl.create({
+        message: mensagem,
+        duration: 3000,
+        position: "middle"
+      });
+      toast.present();
+    }
 
   ionViewDidLoad()
   {

@@ -246,7 +246,7 @@ VouVender(nomeProduto)
   //              console.log('Salvou quantidade desejada:' + data.qtd);
               let item =
               {
-                NomedoProduto: nomeProduto.Nome,
+                NomedoProduto: nomeProduto.NomedoProduto,
                 Quantidade: data.qtd,
                 CodProduto: nomeProduto.CodProduto,
                 CodUsuario: this.userServices.loggedInUser,
@@ -254,6 +254,7 @@ VouVender(nomeProduto)
                 Preco: nomeProduto.Preco,
                 NomeCliente: this.NomeCliente,
                 Status: Modelo,
+                Fornecedor: nomeProduto.CodUsuario
               };
               this.SalvaNovoDesejo(item);
               return true;

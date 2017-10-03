@@ -139,12 +139,25 @@ export class Meusclientes {
 
   closeModal(infos)
   {
-    let data =
+    if (infos.Nome == undefined)
     {
-      NomeCliente: infos.Nome,
-      CodCliente: infos.id
+//      console.log("nome:",infos.Nome)
+      let data =
+      {
+        NomeCliente: ' '
+      }
+      this.viewCtrl.dismiss(data);
     }
-    this.viewCtrl.dismiss(data);
+    else
+    {
+//      console.log("tem alguma coisa no nome")
+      let data =
+      {
+        NomeCliente: infos.Nome,
+        CodCliente: infos.id
+      }
+      this.viewCtrl.dismiss(data);
+    }
   }
 
   ionViewDidLoad()

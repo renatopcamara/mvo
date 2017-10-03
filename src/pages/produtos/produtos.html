@@ -27,7 +27,8 @@
   </ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let item of items" >
-      <button ion-item (click)="selecionaProduto()">
+  <!-- <button ion-item (click)="selecionaProduto()"> -->
+      <button ion-item>
         <p>Código Hinode: {{ item.CodigoHinode }}</p>
         <p>Nome: {{ item.Nome }}</p>
         <p>Preço: {{ item.Preco  }}</p>
